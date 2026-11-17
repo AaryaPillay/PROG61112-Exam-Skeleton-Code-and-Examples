@@ -30,6 +30,15 @@ JMenuItem:
 Creates a menu option
 Exit
 
+
+
 JOptionPane
 Displays messages
 Error or success message
+
+Section and Testing
+Q2.1: designing gui
+Q2.2: loading, calculating and saving data
+Q2.3: creating menus and handling menu clicks
+Q2.4: OOP and interfaces
+Q2.5: Unit testing
