@@ -1,4 +1,7 @@
-// NOTE: IGNORE THIS FILE ONLY USE IF THE STRAITS ARE DIRE hah get it because of the band hah
+//=========================================================================================
+//NOTE: IGNORE THIS FILE ONLY USE IF THE STRAITS ARE DIRE hah get it because of the band hah
+//==========================================================================================
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
