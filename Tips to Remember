@@ -1,0 +1,45 @@
+If the question asks for calculations using arrays, use the ProductSales structure.
+
+If the question asks for an abstract class, inheritance, constructors and getters, use the VehicleService structure.
+
+If the question asks for both, combine the relevant parts.
+
+If: 2D array and exam asks for user input
+Change:
+int[][] data = {
+    {100, 200, 300},
+    {400, 500, 600}
+};
+
+to:
+Scanner input = new Scanner(System.in);
+
+int[][] data = new int[2][3];
+
+for (int i = 0; i < data.length; i++) {
+
+    for (int j = 0; j < data[i].length; j++) {
+
+        System.out.print("Enter value: ");
+
+        data[i][j] = input.nextInt();
+
+    }
+}
+
+implements IProductSales : Connects the class to the interface
+
+@Override : Indicates that the interface method is being implemented
+
+int total = 0; : Starts the total at zero
+
+int max = productSales[0][0]; : Starts maximum with the first array value
+
+int min = productSales[0][0]; : Starts minimum with the first array value
+
+productSales.length : Gets the number of rows
+
+productSales[i].length : Gets the number of columns
+
+return total; : Sends the calculated result back
+
