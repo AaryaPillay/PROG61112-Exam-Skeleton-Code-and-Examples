@@ -1,0 +1,51 @@
+
+package com.mycompany.project;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class ClassNameTest {
+
+    // Test 1
+    @Test
+    public void TestMethodName() {
+
+        // 1. Supply test data
+        int[][] data = {
+            {100, 200, 300},
+            {400, 500, 600}
+        };
+
+        // 2. Create object
+        ClassName obj = new ClassName();
+
+        // 3. Call method
+        int actual = obj.MethodName(data);
+
+        // 4. Check expected result
+        assertEquals(2100, actual);
+
+    }
+
+    // Test 2
+    @Test
+    public void SecondTestMethodName() {
+
+        // 1. Supply test data
+        int[][] data = {
+            {100, 200, 300},
+            {400, 500, 600}
+        };
+
+        // 2. Create object
+        ClassName obj = new ClassName();
+
+        // 3. Call method
+        double actual = obj.AverageMethod(data);
+
+        // 4. Check expected result
+        assertEquals(350.0, actual, 0.001);
+
+    }
+
+}
