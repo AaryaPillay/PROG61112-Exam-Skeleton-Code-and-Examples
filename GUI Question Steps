@@ -1,0 +1,229 @@
+//Based off past paper example
+
+Right Click package
+Select New --> Java Interface
+Create Interface using given
+Create implementing class
+
+============= Creating GUI using Design View: ====================
+Right click package
+Select New --> JFrame Form
+Enter class name ClassNameGUI
+Open Palette (Windows --> IDE Tools --> Palette)
+
+Click empty area --> Properties --> title --> Change to "insert name of system"
+
+Adding a heading:
+JLabel --> drag --> right click --> change text to: "insert name of system"
+Enter 
+
+Add Load Products Data button:
+JButton --> Drag below heading --> change name to Load Products Data 
+--> change variable name t0: btnLoad
+
+Same for Save Products Data button
+change variable name to btnSave
+
+Add Year Processed label:
+JLabel --> drag onto form, set to 0
+change variable name to lblYearsProcessed
+
+Add text area:
+Text Area --> drag onto form -- adjust size
+right click -- change variable name: txtOutput
+Click area --> properties --> editable --> untick
+
+--------- Adding menu system: ------------
+
+Add menu bar:
+Menu Bar --> drag onto form
+Drag Menu onto Menu Bar --> Edit Text --> File
+(only do above if it doesnt automatically do it for you)
+
+right click "Exit" and rename to "Tools"
+or add Menu to Menu Bar if not there, name Tools
+
+Exit Menu Item:
+Menu Item --> drag onto File menu --> change name to Exit
+variable name: mnuExit
+
+Tools Menu Items:
+drag Menu Items onto Tools and change names to 
+Load Product Data: mnuLoad
+Save Product Data: mnuSave
+Clear: mnuClear
+
+============== Adding Java Code ================
+Click Source
+top of GUI.java
+add following imports:
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
+Create Product Sales (Implementing Class) object
+
+find: public class ProductSalesGUI extends javax.swing.JFrame {
+Directly below, add: private ProductSales sales = new ProductSales();
+import Product Sales if necessary
+
+------ loadProductData method: -----
+just below "initComponents()" and outside any other code, paste:
+
+private void loadProductData() {
+
+    int[][] data = sales.GetProductSales();
+
+    StringBuilder output = new StringBuilder();
+
+    output.append("DATA LOG\n");
+    output.append("============================\n\n");
+
+    output.append("Microphone\tSpeakers\tMixing Desk\n");
+
+    for (int i = 0; i < data.length; i++) {
+
+        output.append("Year " + (i + 1) + ":\t");
+
+        for (int j = 0; j < data[i].length; j++) {
+
+            output.append(data[i][j] + "\t");
+        }
+
+        output.append("\n");
+    }
+
+    output.append("\n");
+
+    output.append("Total Sales: ")
+          .append(sales.GetTotalSales()).append("\n");
+
+    output.append("Average Sales: ")
+          .append(Math.round(sales.GetAverageSales()))
+          .append("\n");
+
+    output.append("Sales over limit: ")
+          .append(sales.GetSalesOverLimit()).append("\n");
+
+    output.append("Sales under limit: ")
+          .append(sales.GetSalesUnderLimit()).append("\n");
+
+    txtOutput.setText(output.toString());
+
+    lblYearsProcessed.setText(
+        String.valueOf(sales.GetProductsProcessed())
+    );
+}
+
+Connect Button to method:
+Click Design --> double click Load Products Data button
+find: 
+private void btnLoadActionPerformed(
+    java.awt.event.ActionEvent evt) {
+
+}
+
+add inside: loadProductData();
+
+Save and apply logic to Save button
+
+----------- Create saveProductData method: -----------
+Directly under and after load method, add:
+
+
+private void saveProductData() {
+
+    if (txtOutput.getText().trim().isEmpty()) {
+
+        JOptionPane.showMessageDialog(
+            this,
+            "Please load product data first!"
+        );
+
+        return;
+    }
+
+    try {
+
+        FileWriter writer = new FileWriter("data.txt");
+
+        writer.write(txtOutput.getText());
+
+        writer.close();
+
+        JOptionPane.showMessageDialog(
+            this,
+            "Data saved successfully!"
+        );
+
+    } catch (IOException e) {
+
+        JOptionPane.showMessageDialog(
+            this,
+            "Error: " + e.getMessage()
+        );
+    }
+}
+
+Connect Method to Button:
+double click save product data button in design view
+find:
+private void btnSaveActionPerformed(
+    java.awt.event.ActionEvent evt) {
+
+}
+
+and add inside: saveProductData();
+
+----------- Programming menu items: -------------
+Double click Exit in design view
+or, right click and click events --> actions performed
+add inside mnuExit method: System.exit(0);
+
+Click on Tools (Design View)
+Double click load product data button --> add: loadProductData();
+double click save product data button --> add: saveProductData();
+
+double click Clear button --> add: 
+txtOutput.setText("");
+lblYearsProcessed.setText("0");
+
+Run and Save.
+
+==================== Create Unit Tests as follows: =====================
+
+package com.mycompany.productsales;
+
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class ProductSalesTest {
+
+    @Test
+    public void GetSalesOverLimit_ReturnsNumberOfSales() {
+
+        ProductSales sales = new ProductSales();
+
+        int expected = 2;
+
+        int actual = sales.GetSalesOverLimit();
+
+        assertEquals(expected, actual);
+    }
+    
+    @Test
+    public void GetSalesUnderLimit_ReturnsNumberOfSales() {
+
+        ProductSales sales = new ProductSales();
+
+        int expected = 4;
+
+        int actual = sales.GetSalesUnderLimit();
+
+        assertEquals(expected, actual);
+    }
+}
+
+
