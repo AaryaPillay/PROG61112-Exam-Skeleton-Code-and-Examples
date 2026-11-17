@@ -1,0 +1,44 @@
+JFrame :
+Main application window 
+The entire GUI
+
+JLabel:
+Displays text
+Years Processed
+
+JButton:
+Creates a clickable button
+Load Data
+
+JTextArea:
+Displays multiple lines of text
+Sales report
+
+JScrollPane:
+Adds scrolling to a text area
+Scroll through report
+
+JMenuBar:
+Creates the menu bar
+File, Tools
+
+JMenu:
+Creates a menu
+File
+
+JMenuItem:
+Creates a menu option
+Exit
+
+
+
+JOptionPane
+Displays messages
+Error or success message
+
+Section and Testing
+Q2.1: designing gui
+Q2.2: loading, calculating and saving data
+Q2.3: creating menus and handling menu clicks
+Q2.4: OOP and interfaces
+Q2.5: Unit testing
